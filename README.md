@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load dataset
-df = pd.read_csv('data/winequality-red.csv')
+Load Dataset I'll use the White wine dataset, since this dataset is bigger than the Red one, idk, I've never drank wine or know what ingredients are in wine, if you have, can you tell me, which Wine have a better taste? In [3]: from google.colab import drive drive.mount('/content/drive') Mounted at /content/drive In [4]: white_wine = pd.read_csv('/content
 
 # Prepare data
 X = df.drop('quality', axis=1)
