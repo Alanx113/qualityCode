@@ -11,6 +11,34 @@ X = df.drop('quality', axis=1)
 y = df['quality']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+EDA
+In statistics, exploratory data analysis is an approach of analyzing data sets to summarize their main characteristics, often using statistical graphics and other data visualization methods.
+
+Quality columns data is not properly distributed and so we will convert it into 0, and 1
+
+0 Bad White Wine = 3, 4, 5
+1 Good White Wine = 6, 7, 8, 9
+wine_data.quality = wine_data.quality.replace([3, 4, 5], 0)
+wine_data.quality = wine_data.quality.replace([6, 7, 8, 9], 1)
+wine_data.quality.value_counts() # Let's check it
+quality
+1    855
+0    744
+Name: count, dtype: int64
+okay great!
+
+"""let's make a correlation and construct the heatmap visualization to better understand it."""
+
+wine_data_correlation = wine_data.corr() # correlation
+
+plt.figure(figsize=(18, 10)) # figuring the size
+
+sns.heatmap(
+    wine_data_correlation, # data
+    annot=True, # annotation
+    cmap='summer' # I'll use summer cmap, coz, i like summer
+);
+
 # Train model
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
